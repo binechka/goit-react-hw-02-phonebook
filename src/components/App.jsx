@@ -63,13 +63,13 @@ class App extends React.Component {
       }}
     >
       <ContactForm onSubmit={ this.addContact} />
-      <div>
+      
        
         <Filter value={filter} onChange={this.changeFilter } />
           <ContactList contacts={ visibleContacts} onDeleteContact = {this.deleteItem} />
       
       
-      </div>
+      
   
     </div>
   }
