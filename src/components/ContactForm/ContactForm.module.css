@@ -1,0 +1,21 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input {
+    background-color: rgba(195, 195, 253, 0.89);
+    height: 40px;
+}
+
+.label {
+    gap: 20px;
+}
+
+.labelTxt {
+    margin-right: 10px;
+    text-align: center;
+}
+
+.btn {}

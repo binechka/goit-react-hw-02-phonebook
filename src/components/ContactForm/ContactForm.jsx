@@ -1,9 +1,11 @@
 import React from 'react'
+import f from "./ContactForm.module.css"
 
-class Form extends React.Component {
+class ContactForm extends React.Component {
     state = { name: '',
         number: ''
-    }
+  }
+  
       handleChange = event => {
 const {name, value} = event.currentTarget
     this.setState({ [name]: value
@@ -12,8 +14,8 @@ const {name, value} = event.currentTarget
 
   handleSubmit = e => {
     e.preventDefault()
-      console.log(this.state);
-      this.props.onSubmit(this.state)
+    this.props.onSubmit(this.state.number, this.state.name)
+
       this.reset()
     }
     
@@ -22,7 +24,8 @@ const {name, value} = event.currentTarget
         number: ''})
     }
     render() {
-        return <form onSubmit = {this.handleSubmit}> <label htmlFor="">Name <input
+      return <form className={f.form} onSubmit={this.handleSubmit}> <label className={f.label}><span className={f.labelTxt}> Name</span> <input
+          className={f.input}
   type="text"
         name="name"
         value={this.state.name}
@@ -31,8 +34,9 @@ const {name, value} = event.currentTarget
   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       /></label> 
-        <label> Phone
-        <input
+        <label className={f.label} > <span className={f.labelTxt}>Phone</span> 
+            <input
+              className={f.input}
   type="tel"
           name="number"
           value={this.state.number}
@@ -42,9 +46,9 @@ const {name, value} = event.currentTarget
   required
           />
           </label>
-        <button type="submit">Add contact</button></form>
+        <button className={f.btn} type="submit">Add contact</button></form>
     }
     
 }
 
-export default Form
+export default ContactForm
