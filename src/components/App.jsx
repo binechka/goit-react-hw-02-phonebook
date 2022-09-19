@@ -16,18 +16,32 @@ class App extends React.Component {
   filter:""
   }
 
-  addContact = (number, name) => {
+  addContact = (number, name, e) => {
+   e.preventDefault();
   
-    const contact = {
+    const contactNew = {
       id: nanoid(),
       number,
       name,
     }
     
+    // const contactMap = this.state.contacts.map(contact=>contact.name.toLowerCase() ===
+    //   e.currentTarget.elements.name.value.toLowerCase())
     
-    this.setState(prevState => ({
-      contacts:[contact, ...prevState.contacts]
-    }))
+    // if (contactMap) {
+    //   alert(`${e.currentTarget.elements.name.value} is already in contacts`);
+    //   e.currentTarget.elements.name.value = '';
+    //   e.currentTarget.elements.number.value = '';
+    //   return;
+    // }
+    // this.setState(prevState => ({
+    //  contacts:[contactNew, ...prevState.contacts]
+    // }))
+    
+    this.state.contacts.map(contact=>(contact.name===name) ? alert("дичь") :  this.setState(prevState => ({
+      contacts:[contactNew, ...prevState.contacts]
+    })))
+    
   }
 
 
