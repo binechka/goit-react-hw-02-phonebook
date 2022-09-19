@@ -17,7 +17,7 @@ class App extends React.Component {
     onGetContact = user => {
       const { contacts } = this.state  
       if (contacts.some(contact => contact.name === user.name)) {
-        return alert("shit") 
+        return alert(`${user.name} is already in contacts.`) 
       }
       user.id=nanoid()
        this.setState(prevState => ({
