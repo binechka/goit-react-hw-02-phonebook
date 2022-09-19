@@ -1,23 +1,26 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import f from "./ContactForm.module.css"
-
 class ContactForm extends React.Component {
     state = { name: '',
-        number: ''
+      number: '',
+         
   }
   
       handleChange = event => {
 const {name, value} = event.currentTarget
     this.setState({ [name]: value
-  })
+    })
+      
   };
 
   handleSubmit = e => {
     e.preventDefault()
-    this.props.onSubmit(this.state.number, this.state.name)
-
+    this.props.onSubmit(this.state)
       this.reset()
-    }
+
+  }
+    
     
     reset = () => {
         this.setState({name: '',
@@ -51,4 +54,7 @@ const {name, value} = event.currentTarget
     
 }
 
+ContactForm.propTypes = {
+  onSubmit:PropTypes.func,
+}
 export default ContactForm

@@ -11,39 +11,20 @@ class App extends React.Component {
     {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},],
-    name: '',
-    number: '',
   filter:""
   }
 
-  addContact = (number, name, e) => {
-   e.preventDefault();
-  
-    const contactNew = {
-      id: nanoid(),
-      number,
-      name,
-    }
-    
-    // const contactMap = this.state.contacts.map(contact=>contact.name.toLowerCase() ===
-    //   e.currentTarget.elements.name.value.toLowerCase())
-    
-    // if (contactMap) {
-    //   alert(`${e.currentTarget.elements.name.value} is already in contacts`);
-    //   e.currentTarget.elements.name.value = '';
-    //   e.currentTarget.elements.number.value = '';
-    //   return;
-    // }
-    // this.setState(prevState => ({
-    //  contacts:[contactNew, ...prevState.contacts]
-    // }))
-    
-    this.state.contacts.map(contact=>(contact.name===name) ? alert("дичь") :  this.setState(prevState => ({
-      contacts:[contactNew, ...prevState.contacts]
-    })))
-    
-  }
+    onGetContact = user => {
+      const { contacts } = this.state  
+      if (contacts.some(contact => contact.name === user.name)) {
+        return alert("shit") 
+      }
+      user.id=nanoid()
+       this.setState(prevState => ({
+     contacts:[user, ...prevState.contacts]
+    }))
 
+    }
 
   deleteItem = (contactId) => {
         this.setState(prevState => ({
@@ -76,7 +57,7 @@ class App extends React.Component {
         backgroundColor:"#7c7bff"
       }}
     >
-      <ContactForm onSubmit={ this.addContact} />
+      <ContactForm onSubmit = {this.onGetContact} />
       
        
         <Filter value={filter} onChange={this.changeFilter } />
